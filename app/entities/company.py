@@ -5,6 +5,7 @@ from sqlalchemy.orm import relationship
 
 from database import Base
 from entities.base_entity import BaseEntity
+from entities.user import User
 
 class CompanyMode(enum.Enum):
     PENDING = "PENDING"

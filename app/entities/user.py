@@ -4,6 +4,7 @@ from passlib.context import CryptContext
 
 from database import Base
 from entities.base_entity import BaseEntity
+from entities.task import Task
 
 bcrypt_context = CryptContext(schemes=["bcrypt"])
 
