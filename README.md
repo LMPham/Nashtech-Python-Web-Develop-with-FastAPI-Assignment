@@ -75,34 +75,33 @@ uvicorn main:app --reload
 
 - The API is organized into three endpoint groups, each dedicated to managing CRUD operations for `Company`, `User`, and `Task` entities. Each group provides the following endpoints:
 
-  1. Retrieve All Records:
+  - Retrieve All Records:
 
-  - Endpoint: `GET /{entities}`
-  - Description: Retrieves a list of all records for the specified entity (e.g., all companies, users, or tasks)
-  - Authorization: Accessible by active users
+    - Endpoint: `GET /{entities}`
+    - Description: Retrieves a list of all records for the specified entity (e.g., all companies, users, or tasks)
+    - Authorization: Accessible by active users
 
-  2. Retrieve Record by ID:
+  - Retrieve Record by ID:
 
-  - Endpoint: `GET /{entities}/{id}`
-  - Description: Fetches a specific record based on the given ID, allowing you to retrieve details for a single entity
-  - Authorization: Accessible by active users
+    - Endpoint: `GET /{entities}/{id}`
+    - Description: Fetches a specific record based on the given ID, allowing you to retrieve details for a single entity
+    - Authorization: Accessible by active users
 
-  3. Create Record:
+  - Create Record:
 
-  - Endpoint: `POST /{entities}`
-  - Description: Creates a new record for the specified entity using the provided data. This endpoint allows you to add new companies, users, or tasks
-  - Authorization: Accessible by active admin users
+    - Endpoint: `POST /{entities}`
+    - Description: Creates a new record for the specified entity using the provided data. This endpoint allows you to add new companies, users, or tasks
+    - Authorization: Accessible by active admin users
 
-  4. Update Record by ID:
+  - Update Record by ID:
 
-  - Endpoint: `PUT /{entities}/{id}`
-  - Description: Updates an existing record identified by the provided ID. This endpoint allows you to modify the details of an existing company, user, or task
-  - Authorization: Accessible by active admin users
+    - Endpoint: `PUT /{entities}/{id}`
+    - Description: Updates an existing record identified by the provided ID. This endpoint allows you to modify the details of an existing company, user, or task
+    - Authorization: Accessible by active admin users
 
-  5. Delete Record by ID:
-
-  - Endpoint: `DELETE /{entities}/{id}`
-  - Description: Deletes the record with the specified ID. Use this endpoint to remove a specific company, user, or task from the system.
-  - Authorization: Accessible by active admin users
+  - Delete Record by ID:
+    - Endpoint: `DELETE /{entities}/{id}`
+    - Description: Deletes the record with the specified ID. Use this endpoint to remove a specific company, user, or task from the system.
+    - Authorization: Accessible by active admin users
 
 - To test the endpoints, you will need to use the seeded data available in the Alembic migrations folder, as all endpoints require authentication. Alternatively, you may need to modify the database to add additional users and log in to the application for testing purposes.
