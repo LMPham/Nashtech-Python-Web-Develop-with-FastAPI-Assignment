@@ -11,8 +11,8 @@ bcrypt_context = CryptContext(schemes=["bcrypt"])
 class User(BaseEntity, Base):
     __tablename__ = "users"
     
-    email = Column(String, unique=True, index=True)
-    username = Column(String, unique=True, index=True)
+    email = Column(String, unique=True, nullable=False, index=True)
+    username = Column(String, unique=True, nullable=False, index=True)
     first_name = Column(String, nullable=False)
     last_name = Column(String, nullable=False)
     hashed_password = Column(String, nullable=False)

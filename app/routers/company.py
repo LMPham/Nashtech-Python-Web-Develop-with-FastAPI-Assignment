@@ -2,11 +2,10 @@ from uuid import UUID
 from starlette import status
 from fastapi import APIRouter, Depends, Query
 from sqlalchemy.orm import Session
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from entities.company import CompanyMode
-from database import get_async_db_context, get_db_context
-from models.company import CompanyModel, CompanyViewModel, SearchCompanyModel
+from database import get_db_context
+from models.company import CreateCompanyModel, CompanyViewModel, UpdateCompanyModel, SearchCompanyModel
 from services import company as CompanyService
 from services.exception import ResourceNotFoundError
 
@@ -35,13 +34,13 @@ async def get_company_by_id(company_id: UUID, db: Session = Depends(get_db_conte
     return company
 
 @router.post("", status_code=status.HTTP_201_CREATED, response_model=CompanyViewModel)
-async def create_company(request: CompanyModel, db: Session = Depends(get_db_context)):
+async def create_company(request: CreateCompanyModel, db: Session = Depends(get_db_context)):
     return CompanyService.create_company(request, db)
 
 @router.put("/{company_id}", status_code=status.HTTP_200_OK, response_model=CompanyViewModel)
 async def update_company_by_id(
     company_id: UUID,
-    request: CompanyModel,
+    request: UpdateCompanyModel,
     db: Session = Depends(get_db_context)
 ):
     return CompanyService.update_company_by_id(company_id, request, db)

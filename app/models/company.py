@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, Field
 from entities.company import CompanyMode
 from datetime import datetime
@@ -12,7 +13,7 @@ class SearchCompanyModel():
         self.page = page
         self.size = size
 
-class CompanyModel(BaseModel):
+class CreateCompanyModel(BaseModel):
     name: str = Field()
     description: str = Field()
     mode: CompanyMode = Field(default=CompanyMode.PENDING)
@@ -28,6 +29,21 @@ class CompanyModel(BaseModel):
             }
         }
 
+class UpdateCompanyModel(BaseModel):
+    name: Optional[str] = None
+    description: Optional[str] = None
+    mode: Optional[CompanyMode] = None
+    rating: Optional[int] = Field(None, ge=0, le=5)
+    
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "name": "Nashtech",
+                "description": "Create the best solutions, powered by our excellence in people and technology",
+                "mode": "ESTABLISHED",
+                "rating": "5"
+            }
+        }
 
 class CompanyViewModel(BaseModel):
     id: UUID 
